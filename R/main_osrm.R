@@ -13,15 +13,19 @@ od <- readRDS("data/enquete_OD_2011/Trv11pv2a.RDS")
 ##
 ## Motorised transports
 motor <- c(1, 2, 3, 4, 6, 7, 8, 10, 11, 12)
-od <- filter(od,mode1 %in% motor | mode2 %in% motor | mode3 %in% motor )
+od <- od %>%
+filter(mode1 %in% motor | mode2 %in% motor | mode3 %in% motor ) %>%
+filter(motif != 12 )
 ##
 ## Run OSRM
 options(osrm.server = "http://localhost:5000/")
 ##
 ## For each trip, estimate the path
-n <- nrow(od)
+#n <- nrow(od)
 #n <- 5
-trips <- vector("list",length=5)
+n <- 1000
+sub <- sample_n(od,1000)
+trips <- vector("list",length=n)
 for( i in 1:n){
   cat(paste(i,"/",n,"\n"))     
   id  <- od$ipere[i]
