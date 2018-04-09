@@ -9,14 +9,14 @@ source("include_spatialFunctions.R")
 source("/Users/lavieestuntoucan/Civilia/tech/general/load_R_pkg.R")
 ##
 ## Input data: output of osrm
-d <- "out/allTrips_10.RDS"
+d <- "out/allTrips.RDS"
 d <- readRDS(d)
 ##
 ## Count 1 for each path
 d@data$n <- 1
 ##
 ## Aggregate the paths
-d.ag <- aggit(d,"n")
+d.ag <- aggit(d,"facdep")
 
 ##
 ## Plot it on the map
@@ -30,7 +30,7 @@ map1 <- NULL
 for( i in 1:length(d.ag@lines)){
   i.x <- d.ag@lines[[i]]@Lines[[1]]@coords[,1]
   i.y <- d.ag@lines[[i]]@Lines[[1]]@coords[,2]
-  i.n <- d.ag@data$n[i]
+  i.n <- d.ag@data$facdep[i]
   i.col <- col.n(i.n)
   if( is.null(map1) ) MAP <- map.city
   else MAP <- map1
