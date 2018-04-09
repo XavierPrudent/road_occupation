@@ -22,8 +22,8 @@ options(osrm.server = "http://localhost:5000/")
 ##
 ## For each trip, estimate the path
 #n <- nrow(od)
-#n <- 5
-n <- 1000
+n <- 5
+#n <- 1000
 sub <- sample_n(od,n)
 trips <- vector("list",length=n)
 
