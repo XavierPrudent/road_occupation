@@ -1,4 +1,7 @@
 
+
+
+
 #############################################
 ## return TRUE if geometries intersect as lines, not points
 islines <- function(g1, g2){
@@ -45,11 +48,11 @@ aggit <- function(sldf, attr, fun=sum){
 ## Pick a color
 col.n <- function(x){
   
-  if( x >= 0 & x < 1 ) col.x <- "black"
-  if( x >= 1 & x < 2 ) col.x <- "blue"
-  if( x >= 2 & x < 4 ) col.x <- "yellow"
-  if( x >= 4 & x < 8 ) col.x <- "orange"
-  if( x >= 8 ) col.x <- "red"
+  if( x >= 0 & x < 10 ) col.x <- "black"
+  if( x >= 10 & x < 30 ) col.x <- "blue"
+  if( x >= 30 & x < 60 ) col.x <- "yellow"
+  if( x >= 60 & x < 90 ) col.x <- "orange"
+  if( x >= 90 ) col.x <- "red"
   
   return(col.x)
 }

@@ -24,8 +24,9 @@ options(osrm.server = "http://localhost:5000/")
 #n <- nrow(od)
 #n <- 5
 n <- 1000
-sub <- sample_n(od,1000)
+sub <- sample_n(od,n)
 trips <- vector("list",length=n)
+
 for( i in 1:n){
   cat(paste(i,"/",n,"\n"))     
   id  <- od$ipere[i]
@@ -34,6 +35,7 @@ for( i in 1:n){
   d.x <- od$xlondes[i]
   d.y <- od$ylatdes[i]
   i.path <- osrmRoute(src = c(1, o.x, o.y), dst = c(2, d.x,d.y), overview = "full", sp = TRUE)
+  i.path@data <- od$facdep[i]
   trips[[i]] <- i.path
 }
 ##
